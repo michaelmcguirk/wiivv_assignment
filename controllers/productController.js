@@ -36,6 +36,7 @@ const convertCurrency = (base, target, value) => {
     if(fs.existsSync(config.ratesFile)){
         let rates = readJsonFromFile(config.ratesFile);
         if(Date.now() - rates.timestamp > config.currencyRateRefreshInterval){
+            //file exisits, but timestamp older than specified refresh interval.
             currencyController.updateCurrenciesFromFxApi().then(() => {
                 rates = readJsonFromFile(config.ratesFile);
             });
@@ -44,7 +45,7 @@ const convertCurrency = (base, target, value) => {
     }else{
         //create file and populate with rates.
         currencyController.updateCurrenciesFromFxApi().then(() => {
-            let rates = readJsonFromFile(config.ratesFile);
+            rates = readJsonFromFile(config.ratesFile);
         });
         return (value * rates.rates[base][target]).toFixed(2);
     }

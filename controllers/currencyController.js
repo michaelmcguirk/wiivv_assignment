@@ -11,7 +11,7 @@ exports.updateCurrenciesFromFxApi = async () => {
      }
     for(let source in currencies){
         let symbols = currencies[source].join();
-        rates.rates[source] = {}
+        rates.rates[source] = {};
         await callFxApi(source, symbols).then((data) => {
             rates.rates[source] = data;
         }).catch((error) => {
@@ -19,6 +19,7 @@ exports.updateCurrenciesFromFxApi = async () => {
             return new Error(errMsg);
         });
     }
+    //Write to file and return
     const json = JSON.stringify(rates);
     fs.writeFileSync('./rates.json', json, 'utf8', (err) => {
         if(err != null){

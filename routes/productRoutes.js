@@ -1,6 +1,6 @@
-const productController = require('../controllers/productController')
+const productController = require('../controllers/productController');
 const { check, validationResult } = require('express-validator');
-const config = require('../config.json')
+const config = require('../config.json');
 
 module.exports = (app) => {
 
@@ -23,7 +23,7 @@ module.exports = (app) => {
             if(data instanceof Error){
                 res.status(422).json(data.message);
             }else{
-                res.status(200).json(data)
+                res.status(200).json(data);
             }
                 
         });

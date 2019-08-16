@@ -1,4 +1,4 @@
-const currencyController = require('../controllers/currencyController')
+const currencyController = require('../controllers/currencyController');
 
 module.exports = (app) => {
     app.route('/updateCurrency').get((req,res) => {
