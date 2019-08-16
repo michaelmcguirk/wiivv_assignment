@@ -40,13 +40,13 @@ const convertCurrency = (base, target, value) => {
                 rates = readJsonFromFile(config.ratesFile);
             });
         }
-        return value * rates.rates[base][target];
+        return (value * rates.rates[base][target]).toFixed(2);
     }else{
         //create file and populate with rates.
         currencyController.updateCurrenciesFromFxApi().then(() => {
             let rates = readJsonFromFile(config.ratesFile);
         });
-        return value * rates.rates[base][target];
+        return (value * rates.rates[base][target]).toFixed(2);
     }
 }
 
