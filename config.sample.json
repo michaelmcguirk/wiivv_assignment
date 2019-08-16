@@ -1,0 +1,12 @@
+{
+    "currencies" :  {"USD" : ["EUR", "GBP", "CAD"],
+                    "EUR" : ["GBP", "CAD", "USD"],
+                    "CAD" : ["GBP", "USD", "EUR"],
+                    "GBP" : ["CAD", "USD", "EUR"]},
+    "etsyApiKey" : "<Required Key from etsy.com/developers/>",
+    "etsyURL" : "https://openapi.etsy.com/v2/featured_treasuries/listings/homepage_current",
+    "fxApiURL" : "https://api.exchangeratesapi.io/latest",
+    "ratesFile" : "./rates.json",
+    "currencyRateRefreshInterval" : 3600000
+}
+
