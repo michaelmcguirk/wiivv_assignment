@@ -9,14 +9,13 @@ exports.updateCurrenciesFromFxApi = async () => {
         timestamp : Date.now(),
         rates : {}
      }
-    for(var source in currencies){
-        var symbols = currencies[source].join();
+    for(let source in currencies){
+        let symbols = currencies[source].join();
         rates.rates[source] = {}
         await callFxApi(source, symbols).then((data) => {
             rates.rates[source] = data;
         }).catch((error) => {
             let errMsg = "Error calling FX API: " + error;
-            console.log(errMsg);
             return new Error(errMsg);
         });
     }
@@ -24,7 +23,6 @@ exports.updateCurrenciesFromFxApi = async () => {
     fs.writeFileSync('./rates.json', json, 'utf8', (err) => {
         if(err != null){
             let errMsg = "Error writing currency rates to file: " + err
-            console.log(errMsg);
             return new Error(errMsg);
         }
     });
